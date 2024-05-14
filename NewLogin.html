@@ -1,39 +1,68 @@
 <html>
-    <head>
-        <title>
-            New Login
-        </title>
-        <style>
-            .container{
-                text-align: center;
-                border-style: solid;
-                border-width: 2px;
-                border-color: black;
-                background-color: grey;
-                border-radius: 15px;
-                margin: 100px;
-            }
-        </style>
-    </head>
-    <body>
+
+<head>
+    <title>
+        New Login
+    </title>
+    <style>
+        * {
+            font-weight: bold;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .page {
+            background-image: url(Image\ 2.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        .container {
+            display: inline-block;
+            text-align: center;
+            border-style: solid;
+            border-width: 2px;
+            border-color: black;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            margin-left: 560px;
+            margin-top: 200px;
+            height: 350px;
+            width: 600px;
+
+        }
+
+        table {
+            margin: 50px;
+            padding: 10px;
+        }
+
+        th {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
         <div class="container">
             <center>
+                <h1>Sign-In</h1>
                 <table>
                     <tr>
-                        <th>Your Name :</th>
+                        <th>Your Name </th>
                         <th><input type="text" \></th>
                     </tr>
-                    <br>
                     <tr>
-                        <th>Passcode :</th>
+                        <th>Passcode </th>
                         <th>
                             <input type="password" \>
                         </th>
                     </tr>
-                    <br>
                     <tr>
                         <th>
-                            security Question :
+                            security Question
                         </th>
                         <th>
                             <input type="text" placeholder="Your Favorite Programming Language?">
@@ -42,10 +71,12 @@
                 </table>
             </center>
             <br>
-            <button style="border-radius: 5px; margin: 10px;">
+            <button style="border-radius: 15px; height: 30px;margin-bottom: 20px; width: 150px; ">
                 Sign up
             </button>
             <br>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

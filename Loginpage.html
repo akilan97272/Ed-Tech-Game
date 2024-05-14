@@ -1,62 +1,82 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login page</title>
 	<style>
-		.container{
-			align-items: center;
-			margin: 10px;
-			margin-left: 350px;
-			margin-right: 350px;
-			border: 20px;
-			border-radius: 15px;
-			background-color: rgba(255,255,255,0.5);
+		* {
+			font-weight: bold;
 		}
-		input{
+
+		.page {
+			background-image: url(Image\ 1.png);
+			background-size: cover;
+			background-repeat: no-repeat;
+			height: 100vh;
+		}
+
+		.container {
+			display: inline-block;
+			align-items: center;
+			margin-top: 200px;
+			margin-left: 500px;
+			border: 20px;
+			border-radius: 25px;
+			background-color: rgba(255, 255, 255, 0.6);
+			height: 400px;
+			width: 700px;
+		}
+
+		input {
 			border-radius: 5px;
 		}
 	</style>
 </head>
+
 <body>
-	
-	<div class="container">
-		<center>
-		<form action="#">
-			<h2>Login</h2>
-			<div class="input-field">
-				<table>
-					<tr>
-						<th>
-							Enter the name :
-						</th>
-						<th>
-							<input type="text">
-						</th>
-					</tr>
-					<tr>
-						<th>
-							Passcode :
-						</th>
-						<th>
-							<input type="password">
-						</th>
-					</tr>
-				</table>
-			</div>
-			<br>
-			<div class="forget">
-				<a href="C:\Users\hp\OneDrive\Desktop\.txt\HTML\VisonAstraa\ForgetPassword.html">Forgot Password ? </a>
-			</div>
-			<br><br>
-			<button type="Submit" style="border-radius: 5px;">Login</button>
-			<br>
-			<div class="create-account">
-				<p>Don't have an account ? <a href="NewLogin.html" style="cursor: pointer;">Create account</a></p>
-			</div>
-		</form>
-	</center>
+	<div class="page">
+		<div class="container">
+			<center>
+				<form action="#">
+					<h2 style="padding-top: 50px;">Login</h2>
+					<div class="input-field">
+						<table>
+							<tr>
+								<th>
+									Enter the name
+								</th>
+								<th>
+									<input type="text">
+								</th>
+							</tr>
+							<tr>
+								<th>
+									Passcode
+								</th>
+								<th>
+									<input type="password">
+								</th>
+							</tr>
+						</table>
+					</div>
+					<br>
+					<div class="forget">
+						<a href="C:\Users\hp\OneDrive\Desktop\.txt\HTML\VisonAstraa\ForgetPassword.html">Forgot Password
+							? </a>
+					</div>
+					<br><br>
+					<button type="Submit" style="border-radius: 15px; height: 30px; width: 150px;">Login</button>
+					<br>
+					<div class="create-account">
+						<p>Don't have an account ? <a href="NewLogin.html" style="cursor: pointer;">Create account</a>
+						</p>
+					</div>
+				</form>
+			</center>
+		</div>
 	</div>
 </body>
+
 </html>
