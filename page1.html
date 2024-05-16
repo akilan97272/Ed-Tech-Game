@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('puzzle page.jpg'); /* Change 'wallpaper.jpg' to your image file */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+        animation: backgroundScroll 60s linear infinite;
+        margin: 0; /* Added to remove default margin */
+        padding: 0; /* Added to remove default padding */
+    }
+    @keyframes backgroundScroll {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+/* Added styling for the home button */
+.home-button {
+    position: absolute;
+    top: 5%;
+    left: 5px;
+    color: #fff; /* Text color */
+    font-size: 10px; /* Adjust font size as needed */
+    cursor: pointer;
+    z-index: 9999; /* Ensure it's above other elements */
+}
+.home-button img {
+    width: 80px; /* Adjust width as needed */
+    height: auto;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+}
+
+.home-button:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+h3 {
+    text-align: center;
+    color: #333;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.box {
+    width: 45%;
+    padding: 10px;
+    border: 2px solid #555;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.correct-box {
+    background-color: #7eff7e;
+}
+
+.wrong-box {
+    background-color: #ff7e7e;
+}
+
+.option {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    user-select: none; /* Prevent text selection during dragging */
+}
+
+.buttons {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.panel h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.panel-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.panel-buttons button {
+    margin: 0 10px;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Home button -->
+    <div class="home-button" onclick="goToHome()"><img src="home image 2.png" alt="Home"></div>
+
+    <div class="container">
+        <h2>What is Python and what can you do with it?</h2>
+        <h3>Arrange the options by placing them into the appropriate boxes.</h3>
+        <div class="options">
+            <div id="correctBox" class="box correct-box" ondrop="drop(event, 'YES')" ondragover="allowDrop(event)">
+                <h3>YES</h3>
+            </div>
+            <div id="wrongBox" class="box wrong-box" ondrop="drop(event, 'NO')" ondragover="allowDrop(event)">
+                <h3>NO</h3>
+            </div>
+        </div>
+        <div id="optionsList">
+            <div id="option1" class="option" draggable="true" ondragstart="drag(event)" data-order="1">Python is a high-level programming language.</div>
+            <div id="option2" class="option" draggable="true" ondragstart="drag(event)" data-order="2">Python is used for web development.</div>
+            <div id="option3" class="option" draggable="true" ondragstart="drag(event)" data-order="3">Python is primarily used for statistical analysis and data visualization.</div>
+            <div id="option4" class="option" draggable="true" ondragstart="drag(event)" data-order="4">Python is a low-level language.</div>
+            <div id="option5" class="option" draggable="true" ondragstart="drag(event)" data-order="5">Python is easy to learn and has a simple syntax.</div>
+        </div>
+        
+        <div class="buttons">
+            <button id="submitBtn" onclick="checkAnswers()">Submit</button>
+            <button id="clearBtn" onclick="resetOptions()">Clear</button>
+
+
+        </div>
+    </div>
+
+    <div class="panel" id="successPanel">
+        <h3>Congratulations!</h3>
+        <p>You have placed all options correctly.</p>
+        <div class="panel-buttons">
+            <button onclick="closePanel()">Close</button>
+        </div>
+    </div>
+
+    <div class="panel" id="failurePanel">
+        <h3>Oops!</h3>
+        <p>Options are not placed correctly.</p>
+        <div class="panel-buttons">
+            <button onclick="closePanel()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function goToHome() {
+            // Redirect to home page
+            window.location.href = "Homepage.html"; // Change to your home page URL
+        }
+        
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+        
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+        
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            var target = event.target;
+        
+            // Check if the target is the correct box or any of its children
+            while (target && !target.classList.contains("box")) {
+                target = target.parentNode;
+            }
+        
+            // If the target is a box, append the dragged element
+            if (target) {
+                target.appendChild(document.getElementById(data));
+            }
+        }
+        
+        function checkAnswers() {
+            var correctOptions = ['option1', 'option2', 'option5']; // IDs of correct options
+            var incorrectOptions = ['option3', 'option4']; // IDs of incorrect options
+            var allCorrectPlaced = true;
+            var allIncorrectPlaced = true;
+        
+            correctOptions.forEach(function(optionId) {
+                var option = document.getElementById(optionId);
+                if (option.parentElement.id !== 'correctBox') {
+                    allCorrectPlaced = false;
+                }
+            });
+        
+            incorrectOptions.forEach(function(optionId) {
+                var option = document.getElementById(optionId);
+                if (option.parentElement.id !== 'wrongBox') {
+                    allIncorrectPlaced = false;
+                }
+            });
+        
+            if (allCorrectPlaced && allIncorrectPlaced) {
+                document.getElementById("successPanel").style.display = "block";
+            } else {
+                document.getElementById("failurePanel").style.display = "block";
+            }
+        }
+        
+        function closePanel() {
+            document.getElementById("successPanel").style.display = "none";
+            document.getElementById("failurePanel").style.display = "none";
+        }
+        function resetOptions() {
+    var optionsList = document.getElementById("optionsList");
+    var options = optionsList.querySelectorAll(".option");
+
+    // Define the initial parent containers for each option
+    var initialParents = {
+        "option1": "optionsList",
+        "option2": "optionsList",
+        "option3": "optionsList",
+        "option4": "optionsList",
+        "option5": "optionsList"
+    };
+
+    // Move each option back to its initial parent container
+    for (var id in initialParents) {
+        var option = document.getElementById(id);
+        var initialParentId = initialParents[id];
+        var initialParent = document.getElementById(initialParentId);
+        initialParent.appendChild(option);
+    }
+
+    // Close any open panel
+    closePanel();
+}
+
+
+
+
+        </script>
+        
+</body>
+</html>

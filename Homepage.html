@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMESPLAY Online Gaming Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('backround.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(44, 62, 80, 0.5);
+            padding: 30px 20px;
+        }
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: -100px;
+            margin-bottom: 10px;
+        }
+        .logo {
+          color: white;
+            font-size: 40px;
+            font-family: 'Press Start 2P', cursive; 
+            white-space: nowrap; 
+            margin-right: 30px;
+            margin-left: 100px;
+            margin-top: -15px;
+        }
+        .sub-logo {
+            color: white;
+            font-size: 14px;
+            white-space: nowrap;
+            letter-spacing: 6.5px;
+            margin-left: 100px;
+            margin-bottom: 0px;
+        }
+        .logo-container img {
+            margin-right: 10px;
+            margin-top: 100px;
+            margin-bottom: -70px;
+        }
+        .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        .menu li {
+            display: inline-block;
+            margin-right: 60px;
+        }
+        .menu li a {
+            text-decoration: none;
+            color: white;
+        }
+        .join-btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+        .more-btn {
+            background-color: #ffd700;
+            color: #fff;
+            padding: 20px 40px;
+            border: black;
+            border-radius: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 35px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.001s ease;
+            box-shadow: 0 0 10px 0 #ffd700;
+        }
+
+        .more-btn:hover {
+            animation: glowing 0.8s infinite alternate;
+        }
+
+        @keyframes glowing {
+            0% {
+                box-shadow: 0 0 10px 0 #ffd700;
+            }
+            100% {
+                box-shadow: 0 0 20px 5px #ffd700;
+            }
+        }
+
+        .banner {
+            text-align: center;
+
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 100px 100px;
+            color: white;
+        }
+        .banner h1 {
+            font-size: 60px;
+            margin-top: -60px;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .banner h2{ 
+            font-size: 50px;
+            margin-top: -30px;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+        .banner p {
+            margin-top: -10px;
+            font-size: 17px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .options {
+                flex-direction: column;
+            }
+
+            .box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo-container">
+          <img src="Designer.png" alt="Logo" width="90" height="90">
+            <div class="logo">PYGAME</div>
+            <div class="sub-logo">Vision Astraa</div>
+        </div>
+        <ul class="menu">
+            <li><a href="#">HOMEPAGE</a></li>
+            <li><a href="#">PAGES</a></li>
+            <li><a href="#">GALLERY</a></li>
+            <li><a href="#">GAMES</a></li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">MORE</a></li>
+        </ul>
+        <button class="join-btn" onclick="">Login In</button>
+    </div>
+    <div class="banner">
+        <h1>WELCOME TO VISION ASTRAA</h1>
+        <h2>PYGAME</h2>
+        <p>Embark on an educational journey through the world of Python programming with our immersive game </p>
+        <p>experience. From beginners to seasoned coders, tackle a variety of levels and tasks designed to teach</p>
+        <p>Python in an engaging way. Whether you're mastering loops or diving into advanced concepts, this game will </p>
+        <p>sharpen your skills and make learning Python a thrilling adventure.</p>
+        <button class="more-btn" id="startBtn">START</button>
+    </div>
+
+    <script>
+        const startButton = document.getElementById('startBtn');
+        startButton.addEventListener('click', () => {
+            startButton.style.animation = 'spin 1s forwards';
+            setTimeout(() => {
+                // Redirect to MCQ page or show MCQ options
+                window.location.href = 'page1.html'; // Replace 'mcq_page.html' with your MCQ page URL
+            }, 1000); // Adjust the delay time as needed
+        });
+    </script>
+</body>
+</html>
